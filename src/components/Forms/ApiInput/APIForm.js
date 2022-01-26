@@ -1,10 +1,8 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from "react";
 import { DB_NAME, randomKey, _store } from "../../../services/config/config";
 import { NavBar } from '../../../services/config/navigation';
 import { writeDatabase } from "../../../services/dbops";
 import DB from "../../../services/lib/tiny-idb";
-import HourlyRateInput from "../../DynamicInputs/HourlyRateInput";
 import './styles.css';
 
 
@@ -18,11 +16,11 @@ function ApiForm() {
     const [dateCreated, setDateCreated] = useState(new Date())
     let _uniqueKey = randomKey;
 
-    const hourlyRateStatus = true;
+    // const hourlyRateStatus = true;
 
-    const handleChange = (event) => {
-        this.setState({ [event.target.name]: event.target.value })
-    };
+    // const handleChange = (event) => {
+    //     this.setState({ [event.target.name]: event.target.value })
+    // };
 
     const insertToDB = async (apiData, _uniqueKey) => {
         const db = await DB.openDB(DB_NAME, 1);
@@ -46,13 +44,13 @@ function ApiForm() {
         window.location.reload(true);
     }
 
-    const updateHourlyRate = (data) => {
-        this.setHourRate({ data })
-    }
+    // const updateHourlyRate = (data) => {
+    //     this.setHourRate({ data })
+    // }
 
-    const renderHourlyInput = () => {
-        <HourlyRateInput onUpdateHourlyRate={() => this.updateHourlyRate} />
-    }
+    // const renderHourlyInput = () => {
+    //     <HourlyRateInput onUpdateHourlyRate={() => this.updateHourlyRate} />
+    // }
 
     const handleSubmit = (event) => {
         console.log(_uniqueKey);
@@ -70,7 +68,7 @@ function ApiForm() {
     };
     return (
         <div className="className">
-            <NavBar/>
+            <NavBar />
             <form className="api-form" onSubmit={handleSubmit} >
                 <label>Link To Site</label>
                 <input type="url"
@@ -113,7 +111,7 @@ function ApiForm() {
                 />
 
                 <label htmlFor="rateLimit">Rate Limited?</label>
-                <div className="rate_limit" onChange={e => { setRateLimited(e.target.value); if (e.target.value == true) { this.renderHourlyInput() } else { setHourRate('0') } }}>
+                <div className="rate_limit" onChange={e => { setRateLimited(e.target.value); if (e.target.value === true) { this.renderHourlyInput() } else { setHourRate('0') } }}>
                     <input type="radio" name="rate_limited" className="form-field rate_limitField" value={true} /> Yes
                     <input type="radio" name="rate_limited" className="form-field rate_limitField" value={false} /> No
                 </div>

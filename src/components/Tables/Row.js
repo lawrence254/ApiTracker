@@ -1,24 +1,17 @@
+// import { KeyboardArrowDownIcon, KeyboardArrowUpIcon } from '@mui/icons-material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import Box from '@mui/material/Box';
-import Collapse from '@mui/material/Collapse';
-import IconButton from '@mui/material/IconButton';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Typography from '@mui/material/Typography';
+import { Box, Collapse, IconButton, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
-import * as React from 'react';
+import { Fragment, useState } from 'react';
 
 export default function Row(props) {
     const { row } = props;
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
     let dataRow;
 
     return (
-        <React.Fragment>
+        <Fragment>
             <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
                 <TableCell>
                     <IconButton
@@ -30,8 +23,8 @@ export default function Row(props) {
                     </IconButton>
                 </TableCell>
 
-                <TableCell align="right">{row.Site_Alias}</TableCell>
-                <TableCell align="right">{row.provider}</TableCell>
+                <TableCell align="left">{row.Site_Alias}</TableCell>
+                <TableCell >{row.provider}</TableCell>
                 <TableCell align="right">{new Date(row.date_registered).toLocaleDateString('en-gb')}</TableCell>
             </TableRow>
             <TableRow>
@@ -63,7 +56,7 @@ export default function Row(props) {
                     </Collapse>
                 </TableCell>
             </TableRow>
-        </React.Fragment >
+        </Fragment >
     );
 }
 
