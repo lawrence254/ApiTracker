@@ -5,7 +5,7 @@ export const _store = "keys"
 export var randomKey = (Math.random() + 1).toString(36).substring(7);
 
 export async function setUpDatabase() {
-    "use strict";
+    // "use strict";
 
     return await DB.createDB(DB_NAME, 1, [
         // list of object stores to create after the DB is created

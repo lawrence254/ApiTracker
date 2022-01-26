@@ -3,11 +3,9 @@ import './App.css';
 import ApiForm from './components/Forms/ApiInput/APIForm';
 import ApiDataTable from './components/Tables/ApiDataTable';
 import './fa/fontawesome';
-import { setUpDatabase } from './services/config/config';
 import Navigation from './services/config/navigation';
 
 function App() {
-  setUpDatabase();
   return (
     <div className="App">
       <BrowserRouter>

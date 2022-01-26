@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { DB_NAME, randomKey, _store } from "../../../services/config/config";
+import { randomKey } from "../../../services/config/config";
 import { NavBar } from '../../../services/config/navigation';
 import { writeDatabase } from "../../../services/dbops";
-import DB from "../../../services/lib/tiny-idb";
 import './styles.css';
 
 
@@ -22,17 +21,6 @@ function ApiForm() {
     //     this.setState({ [event.target.name]: event.target.value })
     // };
 
-    const insertToDB = async (apiData, _uniqueKey) => {
-        const db = await DB.openDB(DB_NAME, 1);
-        const keystore = await DB.transaction(db, [_store], "readwrite").getStore("keys");
-        await DB.addObjectData(keystore, {
-            keyID: _uniqueKey,
-            data: apiData,
-        });
-
-        clearFormFields();
-
-    }
 
     const clearFormFields = () => {
         setAlias('');
@@ -56,15 +44,9 @@ function ApiForm() {
         console.log(_uniqueKey);
         event.preventDefault();
 
-        let apiData = JSON.stringify({
-            provider: `${siteName}`, Site_Alias: `${alias}`,
-            data: { Key: `${siteKey}`, Rate_Limited: `${rateLimited}`, Rate_Per_Hour: `${hourRate}`, User_Email: `${userMail}` },
-            date_registered: `${dateCreated}`,
-            keyID: `${_uniqueKey}`
-        });
-
-        insertToDB(apiData, _uniqueKey);
         writeDatabase(`${siteName}`, `${alias}`, `${siteKey}`, `${rateLimited}`, `${hourRate}`, `${userMail}`, `${dateCreated}`, `${_uniqueKey}`);
+        clearFormFields();
+
     };
     return (
         <div className="className">

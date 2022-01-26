@@ -1,4 +1,4 @@
-const rawDB = '../Data/apis.json';
+// const rawDB = '../Data/apis.json';
 const axios = require('axios');
 
 export const writeDatabase = async (siteName, alias, siteKey, rateLimited, hourRate, userMail, dateCreated, _uniqueKey) => {
@@ -21,25 +21,5 @@ export const writeDatabase = async (siteName, alias, siteKey, rateLimited, hourR
     });
 }
 
-export let results = [];
-async function getData() {
-    const response = await axios.get('http://localhost:8080/results')
-    return results.push(response.data)
-}
-console.log(results)
-// let data
-// axios.get('http://localhost:8080/results')
-//     .then(resp => {
-//         data = resp.data
-//         // let getData = resp.data
-//         // console.log(data);
-//         // response = data;
-//         // console.log(data);
-//         return data;
-//     })
-//     .catch(error => {
-//         console.log(error);
-//     });
-// console.log(getData)
 
 

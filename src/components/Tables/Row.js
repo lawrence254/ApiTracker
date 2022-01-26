@@ -8,7 +8,7 @@ import { Fragment, useState } from 'react';
 export default function Row(props) {
     const { row } = props;
     const [open, setOpen] = useState(false);
-    let dataRow;
+    // let dataRow;
 
     return (
         <Fragment>
