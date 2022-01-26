@@ -32,12 +32,12 @@ function ApiForm() {
         window.location.reload(true);
     }
 
-    // const updateHourlyRate = (data) => {
-    //     this.setHourRate({ data })
-    // }
+    function updateHourlyRate(data) {
+        this.setHourRate({ data })
+    }
 
-    // const renderHourlyInput = () => {
-    //     <HourlyRateInput onUpdateHourlyRate={() => this.updateHourlyRate} />
+    // function renderHourlyInput()  {
+    //     return <HourlyRateInput onUpdateHourlyRate={() => this.updateHourlyRate} />
     // }
 
     const handleSubmit = (event) => {
@@ -93,11 +93,23 @@ function ApiForm() {
                 />
 
                 <label htmlFor="rateLimit">Rate Limited?</label>
-                <div className="rate_limit" onChange={e => { setRateLimited(e.target.value); if (e.target.value === true) { this.renderHourlyInput() } else { setHourRate('0') } }}>
+                <div className="rate_limit" onChange={e => { setRateLimited(e.target.value); }}>
                     <input type="radio" name="rate_limited" className="form-field rate_limitField" value={true} /> Yes
                     <input type="radio" name="rate_limited" className="form-field rate_limitField" value={false} /> No
                 </div>
-
+                <div className="hiddenInput" style={{ display: (rateLimited === 'true') ? "contents" : "none" }} >
+                    {/* <HourlyRateInput onUpdateHourlyRate={() => this.updateHourlyRate} /> */}
+                    <label htmlFor="hourlyRate"> Hourly Rate in Hours </label>
+                    <input
+                        type="number"
+                        name="hourRate"
+                        placeholder="How many requests per hour?"
+                        className="form-field hourRate"
+                        id="hourRate"
+                        value={hourRate}
+                        onChange={e => setHourRate(e.target.value)}
+                    />
+                </div>
 
                 <input type="submit" value="submit" className="form-field" />
             </form>
