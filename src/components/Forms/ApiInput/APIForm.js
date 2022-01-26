@@ -1,8 +1,10 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from "react";
 import { DB_NAME, randomKey, _store } from "../../../services/config/config";
+import { NavBar } from '../../../services/config/navigation';
 import { writeDatabase } from "../../../services/dbops";
 import DB from "../../../services/lib/tiny-idb";
-// import { data_store } from "../../../services/queries";
+import HourlyRateInput from "../../DynamicInputs/HourlyRateInput";
 import './styles.css';
 
 
@@ -44,6 +46,14 @@ function ApiForm() {
         window.location.reload(true);
     }
 
+    const updateHourlyRate = (data) => {
+        this.setHourRate({ data })
+    }
+
+    const renderHourlyInput = () => {
+        <HourlyRateInput onUpdateHourlyRate={() => this.updateHourlyRate} />
+    }
+
     const handleSubmit = (event) => {
         console.log(_uniqueKey);
         event.preventDefault();
@@ -60,12 +70,14 @@ function ApiForm() {
     };
     return (
         <div className="className">
+            <NavBar/>
             <form className="api-form" onSubmit={handleSubmit} >
-                <label>Site</label>
-                <input type="text"
+                <label>Link To Site</label>
+                <input type="url"
                     id="siteName"
                     name="siteName"
-                    placeholder="Enter the link to the site"
+                    required
+                    placeholder="e.g https://www.themoviedb.org/"
                     className="form-field siteName"
                     value={siteName}
                     onChange={e => setSiteName(e.target.value)} />
@@ -90,23 +102,7 @@ function ApiForm() {
                     value={userMail}
                     onChange={e => setUserMail(e.target.value)} />
 
-                <label>Key</label>
-                <input type="text"
-                    id="siteKey"
-                    name="siteKey"
-                    placeholder="Enter generated API Key"
-                    className="form-field siteKey"
-                    value={siteKey}
-                    onChange={e => setSiteKey(e.target.value)}
-                />
-
-                <label htmlFor="rateLimit">Rate Limited?</label>
-                <div className="rate_limit">
-                    <input type="radio" name="rate_limited" className="form-field rate_limitField" value={true} onChange={e => setRateLimited(e.target.value)} /> Yes
-                    <input type="radio" name="rate_limited" className="form-field rate_limitField" value={false} onChange={e => setRateLimited(e.target.value)} /> No
-                </div>
-
-                <label>Hourly Rate</label>
+                <label>Generated API Key</label>
                 <input type="text"
                     id="siteKey"
                     name="siteKey"
@@ -115,6 +111,13 @@ function ApiForm() {
                     value={siteKey}
                     onChange={e => setSiteKey(e.target.value)}
                 />
+
+                <label htmlFor="rateLimit">Rate Limited?</label>
+                <div className="rate_limit" onChange={e => { setRateLimited(e.target.value); if (e.target.value == true) { this.renderHourlyInput() } else { setHourRate('0') } }}>
+                    <input type="radio" name="rate_limited" className="form-field rate_limitField" value={true} /> Yes
+                    <input type="radio" name="rate_limited" className="form-field rate_limitField" value={false} /> No
+                </div>
+
 
                 <input type="submit" value="submit" className="form-field" />
             </form>

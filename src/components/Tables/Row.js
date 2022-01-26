@@ -3,52 +3,20 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Box from '@mui/material/Box';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
-import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 import * as React from 'react';
-import { useEffect, useState } from 'react';
-const axios = require('axios');
 
-function createData(Site_Alias, provider, date_registered, keyID, key, Rate_Limited, Rate_Per_Hour, User_Email) {
-    return {
-        Site_Alias,
-        provider,
-        date_registered,
-        data: {
-            key,
-            Rate_Limited,
-            Rate_Per_Hour,
-            User_Email
-        },
-        keyID
-    };
-}
-
-
-function Row(props) {
+export default function Row(props) {
     const { row } = props;
     const [open, setOpen] = React.useState(false);
     let dataRow;
 
-    // let details = [];
-    // for (let i = 0; i < row.length; i++) {
-    //     console.log(row[i]);
-    //     details.push(
-    //         < TableRow key={row[i].data.Key}>
-    //             <TableCell component="th" scope="row">{row[i].data.Key}</TableCell>
-    //             <TableCell>{row[i].data.Rate_Limited}</TableCell>
-    //             <TableCell align="right">{row[i].data.Rate_Per_Hour}</TableCell>
-    //             <TableCell align="right">{row[i].data.User_Email}</TableCell>
-    //         </TableRow>
-    //     )
-    // }
     return (
         <React.Fragment>
             <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
@@ -61,12 +29,10 @@ function Row(props) {
                         {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                     </IconButton>
                 </TableCell>
-                <TableCell component="th" scope="row">
-                    {row.name}
-                </TableCell>
+
                 <TableCell align="right">{row.Site_Alias}</TableCell>
                 <TableCell align="right">{row.provider}</TableCell>
-                <TableCell align="right">{row.date_registered}</TableCell>
+                <TableCell align="right">{new Date(row.date_registered).toLocaleDateString('en-gb')}</TableCell>
             </TableRow>
             <TableRow>
                 <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -115,39 +81,3 @@ Row.propTypes = {
 
     }).isRequired,
 };
-
-
-export default function CollapsibleTable() {
-    const [response, setResponse] = useState(null)
-    useEffect(() => {
-        axios.get('http://localhost:8080/results').then(resp => {
-            setResponse(resp.data)
-        })
-    }, [])
-
-    const rows = [];
-
-    for (let res in response) {
-        rows.push(response[res])
-    }
-
-    return (
-        <TableContainer component={Paper}>
-            <Table aria-label="collapsible table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell />
-                        <TableCell>API</TableCell>
-                        <TableCell align="right">Site</TableCell>
-                        <TableCell align="right">Date</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {rows.map((row) => (
-                        <Row key={row.keyID} row={row} />
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
-    );
-}

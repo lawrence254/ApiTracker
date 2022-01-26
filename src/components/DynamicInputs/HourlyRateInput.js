@@ -1,12 +1,19 @@
-function HourlyRateInput(props) {
+function HourlyRateInput({ props }) {
+    // const provideRate = (hourRate) => {
+    //     this.provideHourlyRate = hourRate;
+    // }
     return (
-        <input
-            type="text"
-            name="hourlyRate"
-            className="form-field hourlyRate"
-            id="hourlyRate"
-            value={hourlyRate}
-            onChange={e => setHourlyRate(e.target.value)}
-        />
+        <div>
+            <label htmlFor="hourlyRate">Hourly Rate in Hours</label>
+            <input
+                type="text"
+                name="hourRate"
+                className="form-field hourRate"
+                id="hourRate"
+                value={0}
+                onChange={e => this.props.onUpdateHourlyRate(e.target.value)}
+            />
+        </div >
     );
 }
+export default HourlyRateInput;

@@ -55,17 +55,17 @@
       "id": 4
     },
     {
-      "provider": "",
-      "Site_Alias": "",
+      "provider": "moringa.instructure.com",
+      "Site_Alias": "Moringa",
       "data": {
-        "Key": "",
+        "Key": "none",
         "Rate_Limited": "false",
-        "Rate_Per_Hour": "",
-        "User_Email": ""
+        "Rate_Per_Hour": "0",
+        "User_Email": "lawrence.karanja@moringaschool.com"
       },
-      "date_registered": "Thu Jan 13 2022 12:53:18 GMT+0300 (East Africa Time)",
-      "keyID": "st4tt",
-      "id": 5
+      "date_registered": "Mon Jan 24 2022 15:39:58 GMT+0300 (East Africa Time)",
+      "keyID": "iji6fk",
+      "id": 6
     }
   ]
 }
