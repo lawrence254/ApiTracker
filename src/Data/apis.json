@@ -29,14 +29,14 @@
     {
       "provider": "Test New API",
       "Site_Alias": "test.acc",
-      "data": [
+      "data": 
         {
           "Key": "dsadfdfady7893qu3jrnwef9",
           "Rate_Limited": "false",
           "Rate_Per_Hour": "",
           "User_Email": "lawrenslava1@gmail.com"
         }
-      ],
+      ,
       "date_registered": "Thu Jan 13 2022 12:47:13 GMT+0300 (East Africa Time)",
       "keyID": "afbkt",
       "id": 3

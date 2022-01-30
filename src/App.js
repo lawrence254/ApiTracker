@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import ApiForm from './components/Forms/ApiInput/APIForm';
-import ApiDataTable from './components/Tables/ApiDataTable';
+import ApiDataTable from './components/Tables/ApiDataTable.tsx';
 import './fa/fontawesome';
 import Navigation from './services/config/navigation';
 

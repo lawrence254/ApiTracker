@@ -15,12 +15,6 @@ function ApiForm() {
     const [dateCreated, setDateCreated] = useState(new Date())
     let _uniqueKey = randomKey;
 
-    // const hourlyRateStatus = true;
-
-    // const handleChange = (event) => {
-    //     this.setState({ [event.target.name]: event.target.value })
-    // };
-
 
     const clearFormFields = () => {
         setAlias('');
@@ -31,14 +25,6 @@ function ApiForm() {
         setUserMail('');
         window.location.reload(true);
     }
-
-    function updateHourlyRate(data) {
-        this.setHourRate({ data })
-    }
-
-    // function renderHourlyInput()  {
-    //     return <HourlyRateInput onUpdateHourlyRate={() => this.updateHourlyRate} />
-    // }
 
     const handleSubmit = (event) => {
         console.log(_uniqueKey);
@@ -98,8 +84,7 @@ function ApiForm() {
                     <input type="radio" name="rate_limited" className="form-field rate_limitField" value={false} /> No
                 </div>
                 <div className="hiddenInput" style={{ display: (rateLimited === 'true') ? "contents" : "none" }} >
-                    {/* <HourlyRateInput onUpdateHourlyRate={() => this.updateHourlyRate} /> */}
-                    <label htmlFor="hourlyRate"> Hourly Rate in Hours </label>
+                    <label htmlFor="hourlyRate"> How Many Requests Per Hour ? </label>
                     <input
                         type="number"
                         name="hourRate"

@@ -24,7 +24,7 @@ export default function Row(props) {
                 </TableCell>
 
                 <TableCell align="left">{row.Site_Alias}</TableCell>
-                <TableCell >{row.provider}</TableCell>
+                <TableCell sx={{ width: '25%' }}>{row.provider.length > 30 ? row.provider.substring(0, 30).concat('...') : row.provider}</TableCell>
                 <TableCell align="right">{new Date(row.date_registered).toLocaleDateString('en-gb')}</TableCell>
             </TableRow>
             <TableRow>
