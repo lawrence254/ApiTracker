@@ -15,12 +15,16 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.24.0",
+    "electron": "^16.0.8",
+    "electron-builder": "^22.14.5",
+    "electron-is-dev": "^2.0.0",
     "json-server": "^0.17.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-error-overlay": "^6.0.9",
     "react-router-dom": "^6.2.1",
     "react-scripts": "4.0.3",
+    "wait-on": "^6.0.0",
     "web-vitals": "^1.1.2"
   },
   "resolutions": {
@@ -31,8 +35,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev-server": "json-server -p 8080 ./src/Data/apis.json"
+    "electron-dev": "concurrently \"BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\""
   },
+  "main": "public/electron.js",
   "eslintConfig": {
     "extends": [
       "react-app",

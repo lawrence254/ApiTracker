@@ -1,47 +1,47 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@mui/material';
-import { useEffect, useState } from 'react';
-import { APIS } from '../../interfaces/ApiModel';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { DataResponse } from '../../interfaces/ApiModel';
 import { NavBar } from '../../services/config/navigation';
 import Row from './Row';
 const axios = require('axios');
 
 export default function ApiDataTable() {
-    const [response, setResponse] = useState(null)
+    const [response, setResponse] = useState<DataResponse[]>([])
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(5);
     const [startRow, setStartRow] = useState(0);
     const [maxPageRow, setMaxPageRow] = useState(rowsPerPage);
     useEffect(() => {
-        axios.get('http://localhost:8080/results').then((resp:APIS) => {
-            
-            setResponse(resp.data)
+
+        axios.get('http://localhost:8080/results').then((resp:DataResponse[])=> {
+            setResponse(resp)
         })
     }, [])
+    
+    console.log(response)
 
-    const rows = [];
-    let slicedRows = [];
+    const rows:DataResponse[] = [];
+    let slicedRows:any=[];
     
     for (let res in response) {
         rows.push(response[res])
     }
 
-    const handleChangePage = (event, newPage) => {
+    const handleChangePage = (event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null,newPage:number) => {
         setPage(newPage);
         setStartRow(maxPageRow + 1);
         slicedRows.push(rows.slice(startRow, maxPageRow))
         console.log(setPage(newPage))
     };
 
-    const handleChangeRowsPerPage = (event) => {
+    const handleChangeRowsPerPage = (event:ChangeEvent<HTMLInputElement>) => {
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
         sliceRows(parseInt(event.target.value, 10));
         setMaxPageRow(parseInt(event.target.value, 10));
     };
-
-    // let startPosition = 0;
     
-    const sliceRows = (maxRows) => {
+    const sliceRows = (maxRows: number) => {
         slicedRows.push(rows.slice(startRow, maxRows));
     }
     return (
@@ -59,11 +59,9 @@ export default function ApiDataTable() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {(rowsPerPage > 0 ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage): rows)
-                            .map((row)=>(<Row key={row.keyID} row={row} />))}
-                            {/* {slicedRows.map((row) => (
-                                
-                            ))} */}
+                            {slicedRows.map((row:DataResponse['results']) => (
+                                <Row key={row.keyID} row={row} />
+                            ))}
                         </TableBody>
                     </Table>
                 </TableContainer>

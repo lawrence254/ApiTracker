@@ -29,14 +29,12 @@
     {
       "provider": "Test New API",
       "Site_Alias": "test.acc",
-      "data": 
-        {
-          "Key": "dsadfdfady7893qu3jrnwef9",
-          "Rate_Limited": "false",
-          "Rate_Per_Hour": "",
-          "User_Email": "lawrenslava1@gmail.com"
-        }
-      ,
+      "data": {
+        "Key": "dsadfdfady7893qu3jrnwef9",
+        "Rate_Limited": "false",
+        "Rate_Per_Hour": "",
+        "User_Email": "lawrenslava1@gmail.com"
+      },
       "date_registered": "Thu Jan 13 2022 12:47:13 GMT+0300 (East Africa Time)",
       "keyID": "afbkt",
       "id": 3
@@ -118,6 +116,32 @@
       "date_registered": "Wed Jan 26 2022 22:09:28 GMT+0300 (East Africa Time)",
       "keyID": "5mpw5",
       "id": 10
+    },
+    {
+      "provider": "https://kasambuli.com",
+      "Site_Alias": "Kasa Wauu",
+      "data": {
+        "Key": "hgjfyguahsd78atdvahwemnq3e78a",
+        "Rate_Limited": "true",
+        "Rate_Per_Hour": "1000",
+        "User_Email": "anotherj110@gmail.com"
+      },
+      "date_registered": "Sun Jan 30 2022 14:14:35 GMT+0300 (East Africa Time)",
+      "keyID": "snf2a",
+      "id": 11
+    },
+    {
+      "provider": "https://www.test.save/api",
+      "Site_Alias": "Test Electron Save",
+      "data": {
+        "Key": "123",
+        "Rate_Limited": "false",
+        "Rate_Per_Hour": "",
+        "User_Email": "me@test.com"
+      },
+      "date_registered": "Sun Jan 30 2022 14:22:10 GMT+0300 (East Africa Time)",
+      "keyID": "u6c3l",
+      "id": 12
     }
   ]
 }
