@@ -1,5 +1,4 @@
 export type DataResponse = {
-  results: {
     provider: string;
     Site_Alias: string;
     date_registered: string;
@@ -12,4 +11,3 @@ export type DataResponse = {
       User_Email: string;
     };
   };
-};
