@@ -1,0 +1,49 @@
+
+  {
+    "appId": "co.ke.lawrencekaranja.apitracker",
+    "productName": "API Tracker",
+    "copyright": "Lawrence Karanja",
+    "directories": {
+        "app": ".",
+        "output": "out",
+        "buildResources": "build-res"
+    },
+    "files": [
+        "package.json",
+        "src/**/*",
+        "node_modules"
+    ],
+    "dmg": {
+        "background": null,
+        "backgroundColor": "#ffffff",
+        "window": {
+            "width": "400",
+            "height": "300"
+        },
+        "contents": [
+            {
+                "x": 100,
+                "y": 100
+            },
+            {
+                "x": 300,
+                "y": 100,
+                "type": "link",
+                "path": "/Applications"
+            }
+        ]
+    },
+    "mac": {
+        "target": "dmg",
+        "category": "public.app-category.utilities",
+        "icon":"logo.icns"
+      },
+    "win": {
+        "target": "nsis",
+        "icon":"logo.ico"
+    },
+    "linux": {
+        "target": "AppImage",
+        "category": "Utility"
+    }
+}

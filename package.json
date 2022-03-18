@@ -1,0 +1,70 @@
+{
+  "name": "apitracker",
+  "version": "0.1.0",
+  "private": true,
+  "author": "Lawrence Karanja",
+  "description": "Save all your API Keys in one location locally. No more multiple registrations(Unless you want to) for the same site due to forgetting you already have an account. Just search your personal DB of API Keys you have created.",
+  "dependencies": {
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-regular-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
+    "@mui/icons-material": "^5.2.5",
+    "@mui/material": "^5.2.8",
+    "@testing-library/jest-dom": "^5.15.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.24.0",
+    "cross-env": "^7.0.3",
+    "electron-is-dev": "^2.0.0",
+    "json-server": "^0.17.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-error-overlay": "^6.0.9",
+    "react-router-dom": "^6.2.1",
+    "react-scripts": "4.0.3",
+    "wait-on": "^6.0.0",
+    "web-vitals": "^1.1.2"
+  },
+  "resolutions": {
+    "react-error-overlay": "6.0.9"
+  },
+  "scripts": {
+    "start": "concurrently --kill-others \"react-scripts start\" \"json-server -p 8080 ./src/Data/apis.json\" ",
+    "react-build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron-dev": "concurrently \"BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-build": "electron-builder",
+    "release": "npm run react-build && electron-builder --publish=always",
+    "build": "npm run react-build && npm run electron-build",
+    "postinstall": "electron-builder install-app-deps",
+    "pack": "electron-builder -mwl"
+  },
+  "main": "public/electron.js",
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "electron": "^16.0.8",
+    "electron-builder": "^22.14.5"
+  }
+}
