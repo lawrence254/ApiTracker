@@ -1,6 +1,6 @@
 {
   "name": "apitracker",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "author": "Lawrence Karanja",
   "description": "Save all your API Keys in one location locally. No more multiple registrations(Unless you want to) for the same site due to forgetting you already have an account. Just search your personal DB of API Keys you have created.",
@@ -39,7 +39,7 @@
     "eject": "react-scripts eject",
     "electron-dev": "concurrently \"BROWSER=none npm start\" \"wait-on http://localhost:3000 && electron .\"",
     "electron-build": "electron-builder",
-    "release": "npm run react-build && electron-builder --publish=always",
+    "release": "npm run react-build && electron-builder -mwl --publish=always",
     "build": "npm run react-build && npm run electron-build",
     "postinstall": "electron-builder install-app-deps",
     "pack": "electron-builder -mwl"
