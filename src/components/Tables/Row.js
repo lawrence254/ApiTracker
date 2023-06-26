@@ -44,7 +44,7 @@ export default function Row(props) {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    < TableRow key={row.data.Key}>
+                                    <TableRow key={row.data.Key}>
                                         <TableCell component="th" scope="row">{row.data.Key}</TableCell>
                                         <TableCell>{row.data.Rate_Limited}</TableCell>
                                         <TableCell align="right">{row.data.Rate_Per_Hour}</TableCell>
