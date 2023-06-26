@@ -36,14 +36,17 @@
     "mac": {
         "target": "dmg",
         "category": "public.app-category.utilities",
-        "icon":"logo.icns"
+        "icon":"logo.icns",
+        "publish":["github"]
       },
     "win": {
-        "target": "nsis",
-        "icon":"logo.ico"
+        "target": ["nsis","portable"],
+        "icon":"logo.ico",
+        "publish":["github"]
     },
     "linux": {
         "target": "AppImage",
-        "category": "Utility"
+        "category": "Utility",
+        "publish":["github"]
     }
 }
