@@ -37,19 +37,16 @@
         "target": "dmg",
         "category": "public.app-category.utilities",
         "icon":"logo.icns",
-        "publish":["github"],
-        "releaseType":"prerelease"
+        "publish":["github"]
       },
     "win": {
         "target": ["nsis","portable"],
         "icon":"logo.ico",
-        "publish":["github"],
-        "releaseType":"prerelease"
+        "publish":["github"]
     },
     "linux": {
         "target": "AppImage",
         "category": "Utility",
-        "publish":["github"],
-        "releaseType":"prerelease"
+        "publish":["github"]
     }
 }
